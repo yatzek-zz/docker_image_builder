@@ -1,0 +1,3 @@
+FROM insready/bazel
+COPY . /usr/src/app
+RUN cd /usr/src/app && bazel fetch //...
