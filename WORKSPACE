@@ -9,15 +9,14 @@ git_repository(
 load(
   "@io_bazel_rules_docker//container:container.bzl",
   "container_pull",
-  "container_image",
   container_repositories = "repositories",
 )
 
 container_repositories()
 
 container_pull(
-    name = "node_6.10.2",
-    registry ="192.168.0.9:5000",
-    repository = "node",
-    tag = "6.10.2",
+    name = "node_distroless",
+    registry = "192.168.0.9:5000",
+    repository = "gcr.io/distroless/nodejs",
+    tag = "latest",
 )

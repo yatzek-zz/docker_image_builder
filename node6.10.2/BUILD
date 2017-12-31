@@ -2,7 +2,7 @@ load("@io_bazel_rules_docker//docker:docker.bzl", "docker_build", "docker_push")
 
 docker_build(
     name = "node_image",
-    base = "@node_6.10.2//image",
+    base = "@node_distroless//image",
     cmd = [
         "npm",
         "start",
