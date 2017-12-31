@@ -3,10 +3,9 @@ load("@io_bazel_rules_docker//docker:docker.bzl", "docker_build", "docker_push")
 docker_build(
     name = "node_image",
     base = "@nodejs_distroless//image",
-    cmd = [
-        "npm",
-        "start",
-    ],
+    # https://github.com/GoogleCloudPlatform/distroless/blob/master/nodejs/README.md
+    # distroless nodejs image sets entrypoint to "node", so need to provide a path to .js file
+    cmd = ["server.js"],
     env = {
         "PORT": "8080",
     },
@@ -15,10 +14,7 @@ docker_build(
         "app",
     ],
     labels = {"maintainer": "Jacek Szlachta"},
-    ports = [
-        "80",
-        "8080",
-    ],
+    ports = ["8080"],
     workdir = "/app",
 )
 
