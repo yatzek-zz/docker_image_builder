@@ -15,7 +15,7 @@ load(
 container_repositories()
 
 container_pull(
-    name = "node_distroless",
+    name = "nodejs_distroless",
     registry = "192.168.0.9:5000",
     repository = "gcr.io/distroless/nodejs",
     tag = "latest",
